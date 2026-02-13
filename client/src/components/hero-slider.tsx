@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import type { Slider } from "@shared/schema";
 
 interface HeroSliderProps {
@@ -38,7 +37,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
           <div className="flex">
             {slides.map((slide, index) => (
               <div key={slide.id} className="flex-[0_0_100%] min-w-0 relative">
-                <div className="relative w-full h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh]">
+                <div className="relative w-full aspect-[4/5] sm:aspect-[16/10] md:aspect-[16/8] lg:aspect-[16/7]">
                   <img
                     src={slide.imageUrl}
                     alt={slide.title}
@@ -46,7 +45,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
                     data-testid={`slider-image-${index}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent" />
-                  <div className="absolute inset-0 flex items-end pb-14 sm:pb-16 md:items-center md:pb-0">
+                  <div className="absolute inset-0 flex items-end pb-20 sm:pb-16 md:items-center md:pb-0">
                     <div className="w-full px-6 sm:px-10 md:px-14 lg:px-16">
                       <div className="max-w-lg">
                         {slide.topText && (
@@ -83,7 +82,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
           </div>
         </div>
 
-        <div className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 flex-col gap-2 hidden sm:flex">
+        <div className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 flex-col gap-2 hidden md:flex">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -100,7 +99,22 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
           ))}
         </div>
 
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 sm:hidden">
+        <button
+          onClick={scrollPrev}
+          className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 md:hidden w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white active:bg-white/30 transition-colors"
+          data-testid="button-slider-prev-mobile"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          onClick={scrollNext}
+          className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 md:hidden w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white active:bg-white/30 transition-colors"
+          data-testid="button-slider-next-mobile"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 md:hidden">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -113,25 +127,21 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
           ))}
         </div>
 
-        <div className="absolute bottom-5 right-5 hidden sm:flex items-center gap-2">
-          <Button
-            size="icon"
-            variant="ghost"
+        <div className="absolute bottom-5 right-5 hidden md:flex items-center gap-2">
+          <button
             onClick={scrollPrev}
-            className="bg-white/15 backdrop-blur-sm text-white border-0 rounded-md"
+            className="w-9 h-9 rounded-md bg-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-colors"
             data-testid="button-slider-prev"
           >
             <ChevronLeft className="w-5 h-5" />
-          </Button>
-          <Button
-            size="icon"
-            variant="ghost"
+          </button>
+          <button
             onClick={scrollNext}
-            className="bg-white/15 backdrop-blur-sm text-white border-0 rounded-md"
+            className="w-9 h-9 rounded-md bg-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-colors"
             data-testid="button-slider-next"
           >
             <ChevronRight className="w-5 h-5" />
-          </Button>
+          </button>
         </div>
       </div>
     </section>
