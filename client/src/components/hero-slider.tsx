@@ -32,7 +32,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
   if (!slides.length) return null;
 
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-6 pt-5 pb-2" data-testid="hero-slider">
+    <section className="px-3 md:px-5 pt-5 pb-2" data-testid="hero-slider">
       <div className="relative rounded-3xl overflow-hidden">
         <div ref={emblaRef}>
           <div className="flex">
