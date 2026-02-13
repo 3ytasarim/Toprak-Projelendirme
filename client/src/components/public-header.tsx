@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import logoImg from "@assets/murat_logo_1770998463808.jpeg";
 
 const navItems = [
   { title: "Ana Sayfa", path: "/" },
@@ -41,9 +42,7 @@ export default function PublicHeader() {
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
           <Link href="/" data-testid="link-logo">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">T</span>
-              </div>
+              <img src={logoImg} alt="Toprak Projelendirme Logo" className="w-10 h-10 rounded-full object-cover" />
               <div>
                 <h1 className="font-bold text-lg leading-tight tracking-tight">TOPRAK</h1>
                 <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">Projelendirme</p>

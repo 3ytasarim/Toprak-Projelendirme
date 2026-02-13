@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import logoImg from "@assets/murat_logo_1770998463808.jpeg";
 
 export default function PublicFooter() {
   return (
@@ -8,9 +9,7 @@ export default function PublicFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">T</span>
-              </div>
+              <img src={logoImg} alt="Toprak Projelendirme Logo" className="w-10 h-10 rounded-full object-cover" />
               <div>
                 <h3 className="font-bold text-lg leading-tight">TOPRAK</h3>
                 <p className="text-[10px] tracking-[0.2em] opacity-60 uppercase">Projelendirme</p>
