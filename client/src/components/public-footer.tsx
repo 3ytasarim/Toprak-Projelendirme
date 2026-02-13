@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Phone, MapPin, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 import logoImg from "@assets/murat_logo_1770998463808.jpeg";
 
 export default function PublicFooter() {
@@ -76,9 +77,15 @@ export default function PublicFooter() {
           <p className="text-xs opacity-50">
             &copy; {new Date().getFullYear()} Toprak Projelendirme - Tüm hakları saklıdır.
           </p>
-          <p className="text-xs opacity-40">
+          <motion.p
+            className="text-xs opacity-40"
+            initial={{ opacity: 0, y: 5 }}
+            whileInView={{ opacity: 0.4, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a>
-          </p>
+          </motion.p>
         </div>
       </div>
     </footer>
