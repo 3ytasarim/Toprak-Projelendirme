@@ -94,15 +94,7 @@ export default function PublicHeader() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 top-16 bg-black/40 z-40 lg:hidden"
-              onClick={() => setMobileOpen(false)}
-            />
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 250 }}
-              className="fixed top-16 right-0 bottom-0 w-[280px] bg-background border-l shadow-xl z-50 lg:hidden flex flex-col"
+              className="fixed inset-0 top-16 z-40 lg:hidden bg-background"
             >
               <nav className="flex flex-col p-5 gap-1 flex-1" data-testid="nav-mobile">
                 {navItems.map((item, index) => {
@@ -130,12 +122,7 @@ export default function PublicHeader() {
                 })}
               </nav>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
-                className="p-5 border-t flex flex-col gap-3"
-              >
+              <div className="p-5 border-t flex flex-col gap-3 mt-auto">
                 <a href="tel:+905066232636" className="flex items-center gap-3 text-sm text-muted-foreground">
                   <Phone className="w-4 h-4" />
                   0 (506) 623 26 36
@@ -144,7 +131,7 @@ export default function PublicHeader() {
                   <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
                   <span>Güzelyalı Mah. Bağdat Cad. No:95/7 Pendik / İstanbul</span>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </>
         )}
