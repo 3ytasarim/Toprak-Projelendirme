@@ -38,8 +38,8 @@ export default function PublicFooter() {
               <div className="flex items-start gap-2">
                 <Clock className="w-4 h-4 mt-0.5 opacity-60" />
                 <div>
-                  <p className="opacity-90">Hafta İçi</p>
-                  <p className="opacity-60">09:00 - 18:00</p>
+                  <p className="opacity-90">Pazartesi - Cuma</p>
+                  <p className="opacity-60">09:00 - 18:30</p>
                 </div>
               </div>
               <div className="flex items-start gap-2">
@@ -62,17 +62,13 @@ export default function PublicFooter() {
           <div>
             <h4 className="font-semibold mb-4 text-sm uppercase tracking-wider">İletişim</h4>
             <div className="flex flex-col gap-3 text-sm">
-              <a href="tel:+905551234567" className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity" data-testid="footer-link-phone">
+              <a href="tel:+905066232636" className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity" data-testid="footer-link-phone">
                 <Phone className="w-4 h-4" />
-                <span>0555 123 45 67</span>
-              </a>
-              <a href="mailto:info@toprakprojelendirme.com" className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity" data-testid="footer-link-email">
-                <Mail className="w-4 h-4" />
-                <span>info@toprakprojelendirme.com</span>
+                <span>0 (506) 623 26 36</span>
               </a>
               <div className="flex items-start gap-2 opacity-70">
                 <MapPin className="w-4 h-4 mt-0.5" />
-                <span>İstanbul, Türkiye</span>
+                <span>Güzelyalı Mah. Bağdat Cad. No:95/7 Pendik / İstanbul</span>
               </div>
             </div>
           </div>

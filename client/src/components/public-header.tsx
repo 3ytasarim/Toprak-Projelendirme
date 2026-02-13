@@ -22,18 +22,14 @@ export default function PublicHeader() {
       <div className="bg-foreground text-background text-sm hidden md:block">
         <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-6 flex-wrap">
-            <a href="tel:+905551234567" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity" data-testid="link-phone-top">
+            <a href="tel:+905066232636" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity" data-testid="link-phone-top">
               <Phone className="w-3.5 h-3.5" />
-              <span>0555 123 45 67</span>
-            </a>
-            <a href="mailto:info@toprakprojelendirme.com" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity" data-testid="link-email-top">
-              <Mail className="w-3.5 h-3.5" />
-              <span>info@toprakprojelendirme.com</span>
+              <span>0 (506) 623 26 36</span>
             </a>
           </div>
           <div className="flex items-center gap-2 opacity-80">
             <MapPin className="w-3.5 h-3.5" />
-            <span>İstanbul, Türkiye</span>
+            <span>Güzelyalı Mah. Bağdat Cad. No:95/7 Pendik / İstanbul</span>
           </div>
         </div>
       </div>

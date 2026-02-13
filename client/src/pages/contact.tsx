@@ -27,18 +27,8 @@ export default function Contact() {
                 <Phone className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-semibold mb-2">Telefon</h3>
-              <a href="tel:+905551234567" className="text-muted-foreground text-sm hover:text-primary transition-colors" data-testid="link-contact-phone">
-                0555 123 45 67
-              </a>
-            </Card>
-
-            <Card className="p-6 text-center">
-              <div className="w-14 h-14 rounded-md bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <Mail className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-semibold mb-2">E-posta</h3>
-              <a href="mailto:info@toprakprojelendirme.com" className="text-muted-foreground text-sm hover:text-primary transition-colors" data-testid="link-contact-email">
-                info@toprakprojelendirme.com
+              <a href="tel:+905066232636" className="text-muted-foreground text-sm hover:text-primary transition-colors" data-testid="link-contact-phone">
+                0 (506) 623 26 36
               </a>
             </Card>
 
@@ -48,7 +38,7 @@ export default function Contact() {
               </div>
               <h3 className="font-semibold mb-2">Adres</h3>
               <p className="text-muted-foreground text-sm">
-                İstanbul, Türkiye
+                Güzelyalı Mahallesi Bağdat Caddesi No:95/7<br />Pendik / İstanbul
               </p>
             </Card>
 
@@ -58,7 +48,7 @@ export default function Contact() {
               </div>
               <h3 className="font-semibold mb-2">Çalışma Saatleri</h3>
               <p className="text-muted-foreground text-sm">
-                Hafta İçi: 09:00 - 18:00
+                Pazartesi - Cuma: 09:00 - 18:30
               </p>
               <p className="text-muted-foreground text-sm">
                 Cumartesi: 09:00 - 14:00
