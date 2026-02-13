@@ -84,7 +84,7 @@ export default function PublicFooter() {
               src={logo3y}
               alt="3Y Tasarım"
               className="w-24 h-24 rounded-md"
-              style={{ filter: "brightness(1.5)" }}
+              style={{ objectFit: "contain" }}
               animate={{ rotateY: 360 }}
               transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
             />
