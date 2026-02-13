@@ -5,14 +5,19 @@ import { Button } from "@/components/ui/button";
 import { createPortal } from "react-dom";
 import logoImg from "@assets/murat_logo_1770998463808.jpeg";
 
-const navItems = [
+const leftNav = [
   { title: "Ana Sayfa", path: "/" },
   { title: "Biz Kimiz?", path: "/hakkimizda" },
   { title: "Hizmetlerimiz", path: "/hizmetler" },
+];
+
+const rightNav = [
   { title: "Projelerimiz", path: "/projeler" },
   { title: "Blog", path: "/blog" },
   { title: "İletişim", path: "/iletisim" },
 ];
+
+const allNav = [...leftNav, ...rightNav];
 
 function HamburgerIcon({ open }: { open: boolean }) {
   return (
@@ -33,6 +38,24 @@ function HamburgerIcon({ open }: { open: boolean }) {
         }`}
       />
     </div>
+  );
+}
+
+function NavLink({ item, location }: { item: { title: string; path: string }; location: string }) {
+  const isActive = item.path === "/" ? location === "/" : location.startsWith(item.path);
+  return (
+    <Link href={item.path}>
+      <span
+        className={`px-3 xl:px-4 py-1.5 text-[13px] font-medium rounded-full transition-all cursor-pointer whitespace-nowrap ${
+          isActive
+            ? "border border-foreground text-foreground"
+            : "text-muted-foreground hover:text-foreground"
+        }`}
+        data-testid={`nav-${item.path.replace("/", "") || "home"}`}
+      >
+        {item.title}
+      </span>
+    </Link>
   );
 }
 
@@ -66,7 +89,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
       }}
     >
       <nav className="flex flex-col p-5 gap-1 flex-1" data-testid="nav-mobile">
-        {navItems.map((item) => {
+        {allNav.map((item) => {
           const isActive = item.path === "/" ? location === "/" : location.startsWith(item.path);
           return (
             <Link key={item.path} href={item.path} onClick={onClose}>
@@ -107,32 +130,32 @@ export default function PublicHeader() {
     <>
       <header className="sticky top-0 bg-background border-b" style={{ zIndex: 100000 }}>
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="relative flex items-center justify-between h-16 gap-6">
-            <nav className="hidden lg:flex items-center gap-1" data-testid="nav-desktop">
-              {navItems.map((item) => {
-                const isActive = item.path === "/" ? location === "/" : location.startsWith(item.path);
-                return (
-                  <Link key={item.path} href={item.path}>
-                    <span
-                      className={`px-4 py-1.5 text-sm font-medium rounded-full transition-all cursor-pointer ${
-                        isActive
-                          ? "border border-foreground text-foreground"
-                          : "text-muted-foreground hover:text-foreground"
-                      }`}
-                      data-testid={`nav-${item.path.replace("/", "") || "home"}`}
-                    >
-                      {item.title}
-                    </span>
-                  </Link>
-                );
-              })}
+          <div className="flex items-center justify-between h-16">
+            <button
+              className="lg:hidden p-2"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              data-testid="button-mobile-menu"
+            >
+              <HamburgerIcon open={mobileOpen} />
+            </button>
+
+            <nav className="hidden lg:flex items-center gap-1" data-testid="nav-desktop-left">
+              {leftNav.map((item) => (
+                <NavLink key={item.path} item={item} location={location} />
+              ))}
             </nav>
 
-            <Link href="/" data-testid="link-logo" className="absolute left-1/2 -translate-x-1/2">
-              <img src={logoImg} alt="Toprak Projelendirme" className="w-14 h-14 rounded-full object-cover" />
+            <Link href="/" data-testid="link-logo" className="mx-4">
+              <img src={logoImg} alt="Toprak Projelendirme" className="w-12 h-12 rounded-full object-cover" />
             </Link>
 
-            <div className="hidden lg:flex items-center ml-auto">
+            <nav className="hidden lg:flex items-center gap-1" data-testid="nav-desktop-right">
+              {rightNav.map((item) => (
+                <NavLink key={item.path} item={item} location={location} />
+              ))}
+            </nav>
+
+            <div className="hidden lg:flex items-center ml-4">
               <a href="tel:+905066232636" data-testid="link-phone-header">
                 <Button variant="outline" size="sm" className="rounded-full gap-2">
                   <Phone className="w-3.5 h-3.5" />
@@ -141,13 +164,7 @@ export default function PublicHeader() {
               </a>
             </div>
 
-            <button
-              className="lg:hidden ml-auto p-2"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              data-testid="button-mobile-menu"
-            >
-              <HamburgerIcon open={mobileOpen} />
-            </button>
+            <div className="lg:hidden w-10" />
           </div>
         </div>
       </header>
