@@ -38,7 +38,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
           <div className="flex">
             {slides.map((slide, index) => (
               <div key={slide.id} className="flex-[0_0_100%] min-w-0 relative">
-                <div className="relative w-full h-[45vh] sm:h-[55vh] md:h-[65vh] lg:h-[75vh]">
+                <div className="relative w-full h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh]">
                   <img
                     src={slide.imageUrl}
                     alt={slide.title}

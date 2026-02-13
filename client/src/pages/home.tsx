@@ -41,7 +41,7 @@ export default function Home() {
     <PublicLayout>
       {slidersLoading ? (
         <div className="max-w-7xl mx-auto px-4 md:px-6 pt-6 pb-2">
-          <Skeleton className="w-full h-[45vh] md:h-[65vh] rounded-2xl" />
+          <Skeleton className="w-full h-[55vh] md:h-[75vh] rounded-2xl" />
         </div>
       ) : (
         <HeroSlider slides={sliders || []} />
