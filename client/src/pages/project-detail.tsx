@@ -1,16 +1,30 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "wouter";
-import { useState } from "react";
-import { MapPin, Calendar, Tag, X } from "lucide-react";
+import { useState, useCallback, useEffect } from "react";
+import { MapPin, Calendar, Tag, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import PublicLayout from "@/components/public-layout";
 import type { Project, ProjectImage } from "@shared/schema";
 import { AnimatePresence, motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
 
 export default function ProjectDetail() {
   const params = useParams<{ slug: string }>();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi]);
 
   const { data: project, isLoading } = useQuery<Project & { images: ProjectImage[] }>({
     queryKey: ["/api/projects", params.slug],
@@ -22,11 +36,7 @@ export default function ProjectDetail() {
         <Skeleton className="w-full h-64 rounded-none" />
         <div className="max-w-6xl mx-auto px-6 py-12">
           <Skeleton className="h-10 w-64 mb-6" />
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <Skeleton key={i} className="h-48 rounded-md" />
-            ))}
-          </div>
+          <Skeleton className="h-96 w-full rounded-md" />
         </div>
       </PublicLayout>
     );
@@ -71,25 +81,97 @@ export default function ProjectDetail() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
+              {allImages.length > 0 && (
+                <div className="mb-10">
+                  <div className="relative rounded-md overflow-hidden">
+                    <div ref={emblaRef} className="overflow-hidden">
+                      <div className="flex">
+                        {allImages.map((img, index) => (
+                          <div
+                            key={img.id}
+                            className="flex-[0_0_100%] min-w-0 cursor-pointer"
+                            onClick={() => setLightboxIndex(index)}
+                            data-testid={`project-slider-image-${index}`}
+                          >
+                            <img
+                              src={img.imageUrl}
+                              alt={`${project.title} - ${index + 1}`}
+                              className="w-full h-72 sm:h-96 md:h-[28rem] object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {allImages.length > 1 && (
+                      <>
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 text-white hover:bg-black/60"
+                          onClick={scrollPrev}
+                          data-testid="button-project-slider-prev"
+                        >
+                          <ChevronLeft className="w-5 h-5" />
+                        </Button>
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 text-white hover:bg-black/60"
+                          onClick={scrollNext}
+                          data-testid="button-project-slider-next"
+                        >
+                          <ChevronRight className="w-5 h-5" />
+                        </Button>
+                      </>
+                    )}
+                  </div>
+
+                  {allImages.length > 1 && (
+                    <div className="flex justify-center gap-2 mt-4">
+                      {allImages.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={() => emblaApi?.scrollTo(i)}
+                          className={`w-2.5 h-2.5 rounded-full transition-all ${
+                            i === selectedIndex ? "bg-primary w-7" : "bg-muted-foreground/30"
+                          }`}
+                          data-testid={`project-slider-dot-${i}`}
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  <p className="text-sm text-muted-foreground mt-3 text-center">
+                    {selectedIndex + 1} / {allImages.length} - {project.title}
+                  </p>
+                </div>
+              )}
+
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 mb-10">
                 {allImages.map((img, index) => (
                   <div
                     key={img.id}
-                    className="cursor-pointer rounded-md overflow-hidden"
-                    onClick={() => setLightboxIndex(index)}
-                    data-testid={`project-gallery-image-${index}`}
+                    className={`cursor-pointer rounded-md overflow-hidden border-2 transition-all ${
+                      index === selectedIndex ? "border-primary" : "border-transparent"
+                    }`}
+                    onClick={() => {
+                      emblaApi?.scrollTo(index);
+                      setSelectedIndex(index);
+                    }}
+                    data-testid={`project-thumbnail-${index}`}
                   >
                     <img
                       src={img.imageUrl}
                       alt={`${project.title} - ${index + 1}`}
-                      className="w-full h-36 sm:h-44 object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-20 sm:h-24 object-cover hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 ))}
               </div>
 
               <div>
-                <h2 className="text-xl font-bold mb-4">Açıklama</h2>
+                <h2 className="text-xl font-bold mb-4">Proje Hakkında</h2>
                 <div className="text-muted-foreground leading-relaxed" data-testid="text-project-description">
                   {project.description.split("\n").map((p, i) => (
                     <p key={i} className="mb-3">{p}</p>
@@ -162,6 +244,34 @@ export default function ProjectDetail() {
             >
               <X />
             </Button>
+            {allImages.length > 1 && (
+              <>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-white/10"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIndex((prev) => (prev! > 0 ? prev! - 1 : allImages.length - 1));
+                  }}
+                  data-testid="button-lightbox-prev"
+                >
+                  <ChevronLeft />
+                </Button>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-white/10"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIndex((prev) => (prev! < allImages.length - 1 ? prev! + 1 : 0));
+                  }}
+                  data-testid="button-lightbox-next"
+                >
+                  <ChevronRight />
+                </Button>
+              </>
+            )}
             <img
               src={allImages[lightboxIndex]?.imageUrl}
               alt=""
