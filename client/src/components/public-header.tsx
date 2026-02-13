@@ -86,56 +86,42 @@ export default function PublicHeader() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 top-16 z-40 lg:hidden bg-background"
-            >
-              <nav className="flex flex-col p-5 gap-1 flex-1" data-testid="nav-mobile">
-                {navItems.map((item, index) => {
-                  const isActive = item.path === "/" ? location === "/" : location.startsWith(item.path);
-                  return (
-                    <motion.div
-                      key={item.path}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 + 0.1 }}
-                    >
-                      <Link href={item.path} onClick={() => setMobileOpen(false)}>
-                        <div
-                          className={`flex items-center justify-between py-3 px-3 rounded-md transition-colors ${
-                            isActive ? "bg-muted text-foreground" : "text-muted-foreground"
-                          }`}
-                          data-testid={`nav-mobile-${item.path.replace("/", "") || "home"}`}
-                        >
-                          <span className="text-sm font-medium">{item.title}</span>
-                          <ChevronRight className="w-4 h-4 opacity-40" />
-                        </div>
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </nav>
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 top-16 lg:hidden flex flex-col"
+          style={{ zIndex: 9999, backgroundColor: "#ffffff" }}
+        >
+          <nav className="flex flex-col p-5 gap-1 flex-1" data-testid="nav-mobile">
+            {navItems.map((item) => {
+              const isActive = item.path === "/" ? location === "/" : location.startsWith(item.path);
+              return (
+                <Link key={item.path} href={item.path} onClick={() => setMobileOpen(false)}>
+                  <div
+                    className={`flex items-center justify-between py-3 px-3 rounded-md transition-colors ${
+                      isActive ? "bg-muted text-foreground" : "text-muted-foreground"
+                    }`}
+                    data-testid={`nav-mobile-${item.path.replace("/", "") || "home"}`}
+                  >
+                    <span className="text-sm font-medium">{item.title}</span>
+                    <ChevronRight className="w-4 h-4 opacity-40" />
+                  </div>
+                </Link>
+              );
+            })}
+          </nav>
 
-              <div className="p-5 border-t flex flex-col gap-3 mt-auto">
-                <a href="tel:+905066232636" className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <Phone className="w-4 h-4" />
-                  0 (506) 623 26 36
-                </a>
-                <div className="flex items-start gap-3 text-sm text-muted-foreground">
-                  <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                  <span>Güzelyalı Mah. Bağdat Cad. No:95/7 Pendik / İstanbul</span>
-                </div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+          <div className="p-5 border-t flex flex-col gap-3">
+            <a href="tel:+905066232636" className="flex items-center gap-3 text-sm text-muted-foreground">
+              <Phone className="w-4 h-4" />
+              0 (506) 623 26 36
+            </a>
+            <div className="flex items-start gap-3 text-sm text-muted-foreground">
+              <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+              <span>Güzelyalı Mah. Bağdat Cad. No:95/7 Pendik / İstanbul</span>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
