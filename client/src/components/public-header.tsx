@@ -7,6 +7,7 @@ import logoImg from "@assets/murat_logo_1770998463808.jpeg";
 
 const navItems = [
   { title: "Ana Sayfa", path: "/" },
+  { title: "Biz Kimiz?", path: "/hakkimizda" },
   { title: "Hizmetlerimiz", path: "/hizmetler" },
   { title: "Projelerimiz", path: "/projeler" },
   { title: "Blog", path: "/blog" },

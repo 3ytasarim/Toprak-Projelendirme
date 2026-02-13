@@ -23,6 +23,7 @@ export default function PublicFooter() {
             <h4 className="font-semibold mb-4 text-sm uppercase tracking-wider">Hızlı Bağlantılar</h4>
             <div className="flex flex-col gap-2">
               <Link href="/" className="opacity-70 hover:opacity-100 transition-opacity text-sm" data-testid="footer-link-home">Ana Sayfa</Link>
+              <Link href="/hakkimizda" className="opacity-70 hover:opacity-100 transition-opacity text-sm" data-testid="footer-link-about">Biz Kimiz?</Link>
               <Link href="/hizmetler" className="opacity-70 hover:opacity-100 transition-opacity text-sm" data-testid="footer-link-services">Hizmetlerimiz</Link>
               <Link href="/projeler" className="opacity-70 hover:opacity-100 transition-opacity text-sm" data-testid="footer-link-projects">Projelerimiz</Link>
               <Link href="/blog" className="opacity-70 hover:opacity-100 transition-opacity text-sm" data-testid="footer-link-blog">Blog</Link>

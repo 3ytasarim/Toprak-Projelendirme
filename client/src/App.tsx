@@ -12,6 +12,7 @@ import ProjectDetail from "@/pages/project-detail";
 import Blog from "@/pages/blog";
 import BlogDetail from "@/pages/blog-detail";
 import Contact from "@/pages/contact";
+import About from "@/pages/about";
 import AdminLogin from "@/pages/admin/login";
 import AdminDashboard from "@/pages/admin/dashboard";
 import AdminSliders from "@/pages/admin/sliders";
@@ -24,6 +25,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/hakkimizda" component={About} />
       <Route path="/hizmetler" component={Services} />
       <Route path="/hizmetler/:slug" component={ServiceDetail} />
       <Route path="/projeler" component={Projects} />
