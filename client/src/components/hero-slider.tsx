@@ -46,18 +46,34 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
                     data-testid={`slider-image-${index}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent" />
-                  <div className="absolute inset-0 flex items-end pb-16 sm:pb-20 md:items-center md:pb-0">
+                  <div className="absolute inset-0 flex items-end pb-14 sm:pb-16 md:items-center md:pb-0">
                     <div className="w-full px-6 sm:px-10 md:px-14 lg:px-16">
                       <div className="max-w-lg">
+                        {slide.topText && (
+                          <span
+                            className="inline-block text-xs sm:text-sm font-medium tracking-widest uppercase text-white/60 mb-3"
+                            data-testid={`slider-top-text-${index}`}
+                          >
+                            {slide.topText}
+                          </span>
+                        )}
                         <h2
                           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3 md:mb-5"
                           data-testid={`slider-title-${index}`}
                         >
                           {slide.title}
                         </h2>
-                        <p className="text-white/70 text-sm sm:text-base leading-relaxed line-clamp-3" data-testid={`slider-desc-${index}`}>
+                        <p className="text-white/70 text-sm sm:text-base leading-relaxed line-clamp-3 mb-3 md:mb-5" data-testid={`slider-desc-${index}`}>
                           {slide.description}
                         </p>
+                        {slide.bottomText && (
+                          <span
+                            className="inline-block text-xs sm:text-sm font-medium tracking-wide text-white/50"
+                            data-testid={`slider-bottom-text-${index}`}
+                          >
+                            {slide.bottomText}
+                          </span>
+                        )}
                       </div>
                     </div>
                   </div>

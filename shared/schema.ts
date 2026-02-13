@@ -11,8 +11,10 @@ export const users = pgTable("users", {
 
 export const sliders = pgTable("sliders", {
   id: serial("id").primaryKey(),
+  topText: text("top_text"),
   title: text("title").notNull(),
   description: text("description").notNull(),
+  bottomText: text("bottom_text"),
   imageUrl: text("image_url").notNull(),
   sortOrder: integer("sort_order").notNull().default(0),
 });

@@ -15,8 +15,10 @@ import type { Slider } from "@shared/schema";
 export default function AdminSliders() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState<Slider | null>(null);
+  const [topText, setTopText] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [bottomText, setBottomText] = useState("");
   const [sortOrder, setSortOrder] = useState("0");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const { toast } = useToast();
@@ -24,8 +26,10 @@ export default function AdminSliders() {
   const { data: sliders, isLoading } = useQuery<Slider[]>({ queryKey: ["/api/sliders"] });
 
   const resetForm = () => {
+    setTopText("");
     setTitle("");
     setDescription("");
+    setBottomText("");
     setSortOrder("0");
     setImageFile(null);
     setEditing(null);
@@ -38,8 +42,10 @@ export default function AdminSliders() {
 
   const openEdit = (slider: Slider) => {
     setEditing(slider);
+    setTopText(slider.topText || "");
     setTitle(slider.title);
     setDescription(slider.description);
+    setBottomText(slider.bottomText || "");
     setSortOrder(String(slider.sortOrder));
     setImageFile(null);
     setDialogOpen(true);
@@ -48,8 +54,10 @@ export default function AdminSliders() {
   const saveMutation = useMutation({
     mutationFn: async () => {
       const formData = new FormData();
+      formData.append("topText", topText);
       formData.append("title", title);
       formData.append("description", description);
+      formData.append("bottomText", bottomText);
       formData.append("sortOrder", sortOrder);
       if (imageFile) formData.append("image", imageFile);
 
@@ -102,8 +110,10 @@ export default function AdminSliders() {
                 <img src={slider.imageUrl} alt={slider.title} className="w-full h-40 object-cover" data-testid={`img-slider-admin-${slider.id}`} />
               </div>
               <div className="p-4">
+                {slider.topText && <p className="text-xs text-muted-foreground mb-1">{slider.topText}</p>}
                 <h3 className="font-semibold text-sm mb-1 line-clamp-1" data-testid={`text-slider-title-${slider.id}`}>{slider.title}</h3>
-                <p className="text-muted-foreground text-xs line-clamp-2 mb-3">{slider.description}</p>
+                <p className="text-muted-foreground text-xs line-clamp-2 mb-1">{slider.description}</p>
+                {slider.bottomText && <p className="text-xs text-primary mb-2">{slider.bottomText}</p>}
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline" onClick={() => openEdit(slider)} data-testid={`button-edit-slider-${slider.id}`}>
                     <Edit className="w-3.5 h-3.5 mr-1" /> Düzenle
@@ -131,12 +141,20 @@ export default function AdminSliders() {
             className="flex flex-col gap-4"
           >
             <div className="flex flex-col gap-2">
+              <Label>Üst Yazı (opsiyonel)</Label>
+              <Input value={topText} onChange={(e) => setTopText(e.target.value)} placeholder="Ör: Profesyonel Mühendislik" data-testid="input-slider-top-text" />
+            </div>
+            <div className="flex flex-col gap-2">
               <Label>Başlık</Label>
               <Input value={title} onChange={(e) => setTitle(e.target.value)} required data-testid="input-slider-title" />
             </div>
             <div className="flex flex-col gap-2">
               <Label>Açıklama</Label>
               <Textarea value={description} onChange={(e) => setDescription(e.target.value)} required data-testid="input-slider-description" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label>Alt Yazı (opsiyonel)</Label>
+              <Input value={bottomText} onChange={(e) => setBottomText(e.target.value)} placeholder="Ör: Statik Proje | Güçlendirme" data-testid="input-slider-bottom-text" />
             </div>
             <div className="flex flex-col gap-2">
               <Label>Sıra</Label>

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
-import { Menu, X, Phone, ArrowRight } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import logoImg from "@assets/murat_logo_1770998463808.jpeg";
@@ -45,19 +45,13 @@ export default function PublicHeader() {
             <img src={logoImg} alt="Toprak Projelendirme" className="w-11 h-11 rounded-full object-cover" />
           </Link>
 
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center">
             <a href="tel:+905066232636" data-testid="link-phone-header">
               <Button variant="outline" size="sm" className="rounded-full gap-2">
                 <Phone className="w-3.5 h-3.5" />
                 0 (506) 623 26 36
               </Button>
             </a>
-            <Link href="/iletisim">
-              <Button size="sm" className="rounded-full gap-2" data-testid="button-header-cta">
-                Teklif Alın
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Button>
-            </Link>
           </div>
 
           <Button
@@ -103,12 +97,6 @@ export default function PublicHeader() {
                     0 (506) 623 26 36
                   </Button>
                 </a>
-                <Link href="/iletisim" onClick={() => setMobileOpen(false)}>
-                  <Button className="w-full rounded-full gap-2">
-                    Teklif Alın
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </Link>
               </div>
             </nav>
           </motion.div>

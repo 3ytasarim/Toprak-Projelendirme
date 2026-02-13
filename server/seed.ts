@@ -9,22 +9,28 @@ export async function seed() {
   await storage.createUser({ username: "admin", password: "admin123" });
 
   await storage.createSlider({
+    topText: "Profesyonel Mühendislik Hizmetleri",
     title: "Yapılarınızın güvenliği ve dayanıklılığı için profesyonel çözümler",
     description: "Uzman mühendis kadromuz, konut ve ticari yapılar için deprem yönetmeliğine uygun taşıyıcı sistem tasarımı ve güçlendirme çözümleri hazırlayarak güvenli yaşam alanları oluşturuyor.",
+    bottomText: "Statik Proje | Güçlendirme | Deprem Analizi",
     imageUrl: "/images/slider-1.png",
     sortOrder: 0,
   });
 
   await storage.createSlider({
+    topText: "Enerji Verimliliği Çözümleri",
     title: "Binalarınızın enerji verimliliğini artırmak için yanınızdayız",
     description: "Enerji kimlik belgeleri ve teknik raporlarımız ile İstanbul'daki tüm konut ve ticari yapılar için güvenli, sürdürülebilir ve mevzuata uygun çözümler sağlıyoruz.",
+    bottomText: "Enerji Kimlik Belgesi | Teknik Raporlama",
     imageUrl: "/images/slider-2.png",
     sortOrder: 1,
   });
 
   await storage.createSlider({
+    topText: "Modern Mimari Tasarım",
     title: "Modern mimari projeler ile yaşam alanlarını tasarlıyoruz",
     description: "Konut, ofis ve ticari alanlarda 3D modelleme, avan proje ve uygulama çizimleri ile kullanıcı ihtiyaçlarına uygun modern ve fonksiyonel mekanlar sunuyoruz.",
+    bottomText: "3D Modelleme | Mimari Proje | İç Mekan Tasarımı",
     imageUrl: "/images/slider-3.png",
     sortOrder: 2,
   });

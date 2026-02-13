@@ -114,8 +114,10 @@ export async function registerRoutes(
   app.post("/api/admin/sliders", requireAdmin, upload.single("image"), async (req, res) => {
     if (!req.file) return res.status(400).json({ message: "Görsel gerekli" });
     const slider = await storage.createSlider({
+      topText: req.body.topText || null,
       title: req.body.title,
       description: req.body.description,
+      bottomText: req.body.bottomText || null,
       imageUrl: `/uploads/${req.file.filename}`,
       sortOrder: parseInt(req.body.sortOrder || "0"),
     });
@@ -124,8 +126,10 @@ export async function registerRoutes(
 
   app.put("/api/admin/sliders/:id", requireAdmin, upload.single("image"), async (req, res) => {
     const data: any = {
+      topText: req.body.topText || null,
       title: req.body.title,
       description: req.body.description,
+      bottomText: req.body.bottomText || null,
       sortOrder: parseInt(req.body.sortOrder || "0"),
     };
     if (req.file) data.imageUrl = `/uploads/${req.file.filename}`;
