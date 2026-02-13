@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Phone, MapPin, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import logoImg from "@assets/murat_logo_1770998463808.jpeg";
+import logo3y from "@assets/3y-logo1_1771001624496.png";
 
 export default function PublicFooter() {
   return (
@@ -82,6 +83,13 @@ export default function PublicFooter() {
             animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
             transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 2 }}
           >
+            <motion.img
+              src={logo3y}
+              alt="3Y Tasarım"
+              className="w-5 h-5 inline-block mr-1.5 align-middle"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            />
             Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a>
           </motion.p>
         </div>
