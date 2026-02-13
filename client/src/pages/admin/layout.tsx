@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Image, FileText, Briefcase, FolderOpen, LogOut, LayoutDashboard } from "lucide-react";
 import { apiRequest, queryClient } from "@/lib/queryClient";
+import logoImg from "@assets/murat_logo_1770998463808.jpeg";
 
 const adminNav = [
   { title: "Dashboard", path: "/admin", icon: LayoutDashboard },
@@ -50,9 +51,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         <div className="p-5 border-b">
           <Link href="/">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-md bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-base">T</span>
-              </div>
+              <img src={logoImg} alt="Toprak" className="w-10 h-10 rounded-md object-cover" />
               <div>
                 <h1 className="font-bold text-sm leading-tight">TOPRAK</h1>
                 <p className="text-[9px] tracking-[0.15em] text-muted-foreground uppercase">Admin Panel</p>
@@ -95,9 +94,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         <header className="border-b bg-card p-4 flex items-center justify-between gap-4 md:hidden">
           <Link href="/">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">T</span>
-              </div>
+              <img src={logoImg} alt="Toprak" className="w-9 h-9 rounded-md object-cover" />
               <span className="font-bold text-sm">Admin</span>
             </div>
           </Link>
