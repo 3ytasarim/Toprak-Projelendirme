@@ -86,6 +86,16 @@ export async function registerRoutes(
     res.json(post);
   });
 
+  // Contact form
+  app.post("/api/contact", async (req, res) => {
+    const { name, phone, email, subject, message } = req.body;
+    if (!name || !phone || !message) {
+      return res.status(400).json({ message: "Gerekli alanları doldurun" });
+    }
+    console.log("Yeni iletişim formu:", { name, phone, email, subject, message });
+    res.json({ success: true });
+  });
+
   // Admin Auth
   app.post("/api/admin/login", async (req, res) => {
     const { username, password } = req.body;

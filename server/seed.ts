@@ -121,5 +121,14 @@ export async function seed() {
     slug: "enerji-kimlik-belgesi-nedir",
   });
 
+  await storage.createSlider({
+    topText: "Toprak Projelendirme",
+    title: "Güvenilir mühendislik çözümleri ile projelerinizi hayata geçiriyoruz",
+    description: "Pendik merkezli ofisimizden İstanbul genelinde konut, ticari ve endüstriyel yapılar için kapsamlı mühendislik ve projelendirme hizmetleri sunuyoruz.",
+    bottomText: "Statik Proje | Mimari Proje | Enerji Kimlik Belgesi",
+    imageUrl: "/uploads/building-office.webp",
+    sortOrder: 3,
+  });
+
   console.log("Seed data inserted successfully");
 }
