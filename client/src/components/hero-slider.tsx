@@ -32,8 +32,8 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
   if (!slides.length) return null;
 
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-6 pt-6 pb-2" data-testid="hero-slider">
-      <div className="relative rounded-2xl overflow-hidden">
+    <section className="max-w-7xl mx-auto px-4 md:px-6 pt-5 pb-2" data-testid="hero-slider">
+      <div className="relative rounded-3xl overflow-hidden">
         <div ref={emblaRef}>
           <div className="flex">
             {slides.map((slide, index) => (
@@ -45,22 +45,17 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
                     className="absolute inset-0 w-full h-full object-cover"
                     data-testid={`slider-image-${index}`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full px-6 sm:px-10 md:px-14">
-                      <div className="max-w-xl">
-                        <div className="inline-block mb-3">
-                          <span className="text-white/50 text-xs font-medium tracking-widest uppercase">
-                            {String(index + 1).padStart(2, "0")}/{String(slides.length).padStart(2, "0")}
-                          </span>
-                        </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent" />
+                  <div className="absolute inset-0 flex items-end pb-16 sm:pb-20 md:items-center md:pb-0">
+                    <div className="w-full px-6 sm:px-10 md:px-14 lg:px-16">
+                      <div className="max-w-lg">
                         <h2
-                          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-3 md:mb-5"
+                          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3 md:mb-5"
                           data-testid={`slider-title-${index}`}
                         >
                           {slide.title}
                         </h2>
-                        <p className="text-white/75 text-sm sm:text-base leading-relaxed line-clamp-3" data-testid={`slider-desc-${index}`}>
+                        <p className="text-white/70 text-sm sm:text-base leading-relaxed line-clamp-3" data-testid={`slider-desc-${index}`}>
                           {slide.description}
                         </p>
                       </div>
@@ -72,7 +67,24 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
           </div>
         </div>
 
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2">
+        <div className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 flex-col gap-2 hidden sm:flex">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => emblaApi?.scrollTo(index)}
+              className={`w-8 h-8 rounded-md text-xs font-semibold transition-all duration-300 ${
+                index === selectedIndex
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-white/20 backdrop-blur-sm text-white hover:bg-white/30"
+              }`}
+              data-testid={`slider-dot-${index}`}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 sm:hidden">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -80,31 +92,29 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 index === selectedIndex ? "w-7 bg-white" : "w-1.5 bg-white/40"
               }`}
-              data-testid={`slider-dot-${index}`}
+              data-testid={`slider-dot-mobile-${index}`}
             />
           ))}
         </div>
 
-        <div className="absolute top-1/2 -translate-y-1/2 left-3 hidden sm:block">
+        <div className="absolute bottom-5 right-5 hidden sm:flex items-center gap-2">
           <Button
             size="icon"
             variant="ghost"
             onClick={scrollPrev}
-            className="bg-white/10 backdrop-blur-sm text-white border-0"
+            className="bg-white/15 backdrop-blur-sm text-white border-0 rounded-md"
             data-testid="button-slider-prev"
           >
-            <ChevronLeft />
+            <ChevronLeft className="w-5 h-5" />
           </Button>
-        </div>
-        <div className="absolute top-1/2 -translate-y-1/2 right-3 hidden sm:block">
           <Button
             size="icon"
             variant="ghost"
             onClick={scrollNext}
-            className="bg-white/10 backdrop-blur-sm text-white border-0"
+            className="bg-white/15 backdrop-blur-sm text-white border-0 rounded-md"
             data-testid="button-slider-next"
           >
-            <ChevronRight />
+            <ChevronRight className="w-5 h-5" />
           </Button>
         </div>
       </div>
