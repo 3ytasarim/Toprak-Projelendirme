@@ -58,15 +58,16 @@ export default function Home() {
           >
             <motion.div variants={fadeUp}>
               <span className="text-primary font-medium text-sm tracking-widest uppercase mb-3 block">
-                Hoş Geldiniz
+                Deprem Güvenliğinde Mühendislik Çözümleri
               </span>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight" data-testid="text-about-title">
-                Uzman Ekibimiz, Olağanüstü İşçilik Sunmaktadır
+                Bilimsel Analiz. Saha Deneyimi. Gerçek Mühendislik.
               </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Toprak Projelendirme Mimarlık Mühendislik, TBDY 2018 esaslarına uygun olarak; deprem performans analizi, güçlendirme projelendirme ve yapısal risk değerlendirme alanlarında uzmanlaşmış mühendislik ofisidir.
+              </p>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                Toprak Projelendirme olarak, yapılarınızın güvenliği ve geleceği için 
-                profesyonel mühendislik çözümleri sunuyoruz. Deneyimli kadromuz ile 
-                İstanbul genelinde konut ve ticari yapılar için güvenilir hizmetler sağlıyoruz.
+                Kamu yapıları, hastaneler, spor salonları, endüstriyel tesisler, lojistik depolar ve tarihi yapılar başta olmak üzere, yüzlerce yapının teknik analiz ve değerlendirme süreci tarafımızca yürütülmüştür.
               </p>
 
               <div className="grid grid-cols-2 gap-6 mb-8">
@@ -75,8 +76,8 @@ export default function Home() {
                     <Award className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold" data-testid="text-experience">15+</p>
-                    <p className="text-sm text-muted-foreground">Yıllık Tecrübe</p>
+                    <p className="text-2xl font-bold" data-testid="text-experience">300.000+</p>
+                    <p className="text-sm text-muted-foreground">m² Analiz Tecrübesi</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -84,17 +85,18 @@ export default function Home() {
                     <Users className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold" data-testid="text-customers">1200+</p>
-                    <p className="text-sm text-muted-foreground">Mutlu Müşteri</p>
+                    <p className="text-2xl font-bold" data-testid="text-customers">200+</p>
+                    <p className="text-sm text-muted-foreground">Yapı Analizi</p>
                   </div>
                 </div>
               </div>
 
               <div className="flex flex-col gap-3">
                 {[
-                  "Deprem yönetmeliğine uygun projeler",
-                  "Profesyonel mühendislik kadrosu",
-                  "Zamanında teslim garantisi",
+                  "TBDY 2018 esaslarına uygun deprem performans analizi",
+                  "Kamu projelerinde deneyim ve üniversite onay süreç yönetimi",
+                  "Saha + ofis entegre çalışma modeli",
+                  "Yerinde donatı tespiti ve karot değerlendirmesi",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
