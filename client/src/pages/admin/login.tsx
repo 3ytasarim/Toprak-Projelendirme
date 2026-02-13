@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
+import { apiRequest, queryClient } from "@/lib/queryClient";
+import logoImg from "@assets/murat_logo_1770998463808.jpeg";
 
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
@@ -19,6 +20,7 @@ export default function AdminLogin() {
     setLoading(true);
     try {
       await apiRequest("POST", "/api/admin/login", { username, password });
+      await queryClient.invalidateQueries({ queryKey: ["/api/admin/me"] });
       setLocation("/admin");
     } catch {
       toast({ title: "Giriş başarısız", description: "Kullanıcı adı veya şifre hatalı", variant: "destructive" });
@@ -31,9 +33,7 @@ export default function AdminLogin() {
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <Card className="w-full max-w-sm p-8">
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-md bg-primary flex items-center justify-center mx-auto mb-4">
-            <span className="text-primary-foreground font-bold text-2xl">T</span>
-          </div>
+          <img src={logoImg} alt="Toprak" className="w-16 h-16 rounded-md object-cover mx-auto mb-4" />
           <h1 className="text-xl font-bold" data-testid="text-login-title">Admin Paneli</h1>
           <p className="text-sm text-muted-foreground mt-1">Yönetim paneline giriş yapın</p>
         </div>
