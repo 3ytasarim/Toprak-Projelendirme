@@ -79,10 +79,8 @@ export default function PublicFooter() {
           </p>
           <motion.p
             className="text-xs opacity-40"
-            initial={{ opacity: 0, y: 5 }}
-            whileInView={{ opacity: 0.4, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
+            transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 2 }}
           >
             Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a>
           </motion.p>
