@@ -85,8 +85,8 @@ export default function PublicFooter() {
               alt="3Y Tasarım"
               className="w-24 h-24 rounded-md"
               style={{ objectFit: "contain" }}
-              animate={{ rotateY: [0, 360] }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear", repeatType: "loop" }}
+              animate={{ rotateY: [0, 180, 360] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", times: [0, 0.5, 1] }}
             />
             <span>Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a></span>
           </motion.div>
