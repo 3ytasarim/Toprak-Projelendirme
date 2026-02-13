@@ -102,7 +102,7 @@ export default function PublicHeader() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 250 }}
-              className="fixed top-16 right-0 bottom-0 w-[280px] bg-background/95 backdrop-blur-md border-l shadow-xl z-50 lg:hidden flex flex-col"
+              className="fixed top-16 right-0 bottom-0 w-[280px] bg-background border-l shadow-xl z-50 lg:hidden flex flex-col"
             >
               <nav className="flex flex-col p-5 gap-1 flex-1" data-testid="nav-mobile">
                 {navItems.map((item, index) => {
