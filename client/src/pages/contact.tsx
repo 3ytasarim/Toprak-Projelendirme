@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import PublicLayout from "@/components/public-layout";
+import buildingImg from "@assets/2022-07-22_1771000615162.webp";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -43,7 +44,7 @@ export default function Contact() {
   return (
     <PublicLayout>
       <section className="relative py-20 md:py-28 overflow-hidden">
-        <img src="/images/slider-3.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={buildingImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/70" />
         <div className="relative max-w-7xl mx-auto px-6">
           <h1 className="text-3xl md:text-5xl font-bold text-white mb-4" data-testid="text-page-title">İletişim</h1>
