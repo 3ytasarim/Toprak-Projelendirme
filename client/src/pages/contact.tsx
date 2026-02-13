@@ -43,7 +43,7 @@ export default function Contact() {
 
   return (
     <PublicLayout>
-      <section className="relative py-20 md:py-28 overflow-hidden">
+      <section className="relative py-28 md:py-36 overflow-hidden">
         <img src={buildingImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/70" />
         <div className="relative max-w-7xl mx-auto px-6">
