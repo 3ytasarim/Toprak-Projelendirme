@@ -82,7 +82,7 @@ export default function PublicFooter() {
             animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
             transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 2 }}
           >
-            Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a>
+            Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="text-background hover:opacity-100 transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a>
           </motion.p>
         </div>
       </div>
