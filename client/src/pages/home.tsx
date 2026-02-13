@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Building2, Shield, FileText, Zap, Award, Users, CheckCircle } from "lucide-react";
+import { ArrowRight, Building2, Shield, FileText, Zap, Award, Users, CheckCircle, Landmark, Factory } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -18,7 +18,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.15 } },
 };
 
-const serviceIcons = [Building2, Shield, FileText, Zap];
+const serviceIcons = [Shield, Building2, FileText, Zap, Factory, Landmark];
 
 export default function Home() {
   const { data: sliders, isLoading: slidersLoading } = useQuery<Slider[]>({
@@ -143,12 +143,12 @@ export default function Home() {
               </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {servicesLoading
-                ? Array.from({ length: 4 }).map((_, i) => (
+                ? Array.from({ length: 6 }).map((_, i) => (
                     <Skeleton key={i} className="h-80 rounded-md" />
                   ))
-                : services?.slice(0, 4).map((service, i) => {
+                : services?.slice(0, 6).map((service, i) => {
                     const Icon = serviceIcons[i % serviceIcons.length];
                     return (
                       <motion.div key={service.id} variants={fadeUp}>
