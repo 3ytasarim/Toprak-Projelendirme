@@ -31,13 +31,13 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
   if (!slides.length) return null;
 
   return (
-    <section className="px-3 md:px-5 pt-5 pb-2" data-testid="hero-slider">
-      <div className="relative rounded-3xl overflow-hidden">
+    <section className="px-0 sm:px-3 md:px-5 pt-0 sm:pt-5 pb-2" data-testid="hero-slider">
+      <div className="relative rounded-none sm:rounded-3xl overflow-hidden">
         <div ref={emblaRef}>
           <div className="flex">
             {slides.map((slide, index) => (
               <div key={slide.id} className="flex-[0_0_100%] min-w-0 relative">
-                <div className="relative w-full aspect-[4/5] sm:aspect-[16/10] md:aspect-[16/8] lg:aspect-[16/7]">
+                <div className="relative w-full aspect-[3/4] sm:aspect-[16/10] md:aspect-[16/8] lg:aspect-[16/7]">
                   <img
                     src={slide.imageUrl}
                     alt={slide.title}
