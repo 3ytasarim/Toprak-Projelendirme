@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
-import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import { Menu, X, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import logoImg from "@assets/murat_logo_1770998463808.jpeg";
@@ -19,46 +19,59 @@ export default function PublicHeader() {
 
   return (
     <>
-      <div className="bg-foreground text-background text-sm hidden md:block">
-        <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between gap-4 flex-wrap">
-          <div className="flex items-center gap-6 flex-wrap">
-            <a href="tel:+905066232636" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity" data-testid="link-phone-top">
-              <Phone className="w-3.5 h-3.5" />
-              <span>0 (506) 623 26 36</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-2 opacity-80">
-            <MapPin className="w-3.5 h-3.5" />
+      <div className="bg-foreground text-background text-xs hidden md:block">
+        <div className="max-w-7xl mx-auto px-6 py-1.5 flex items-center justify-between gap-4 flex-wrap">
+          <a href="tel:+905066232636" className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity" data-testid="link-phone-top">
+            <Phone className="w-3 h-3" />
+            <span>0 (506) 623 26 36</span>
+          </a>
+          <div className="flex items-center gap-2 opacity-70">
+            <MapPin className="w-3 h-3" />
             <span>Güzelyalı Mah. Bağdat Cad. No:95/7 Pendik / İstanbul</span>
           </div>
         </div>
       </div>
 
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between gap-4">
           <Link href="/" data-testid="link-logo">
             <div className="flex items-center gap-3">
-              <img src={logoImg} alt="Toprak Projelendirme Logo" className="w-10 h-10 rounded-full object-cover" />
-              <div>
-                <h1 className="font-bold text-lg leading-tight tracking-tight">TOPRAK</h1>
-                <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">Projelendirme</p>
+              <img src={logoImg} alt="Toprak Projelendirme Logo" className="w-9 h-9 rounded-full object-cover" />
+              <div className="leading-none">
+                <h1 className="font-bold text-base tracking-tight">TOPRAK</h1>
+                <p className="text-[9px] tracking-[0.2em] text-muted-foreground uppercase mt-0.5">Projelendirme</p>
               </div>
             </div>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1" data-testid="nav-desktop">
-            {navItems.map((item) => (
-              <Link key={item.path} href={item.path}>
-                <Button
-                  variant={location === item.path ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid={`nav-${item.path.replace("/", "") || "home"}`}
-                >
-                  {item.title}
-                </Button>
-              </Link>
-            ))}
+          <nav className="hidden md:flex items-center gap-0.5" data-testid="nav-desktop">
+            {navItems.map((item) => {
+              const isActive = item.path === "/" ? location === "/" : location.startsWith(item.path);
+              return (
+                <Link key={item.path} href={item.path}>
+                  <span
+                    className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors cursor-pointer ${
+                      isActive
+                        ? "text-foreground bg-muted"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                    data-testid={`nav-${item.path.replace("/", "") || "home"}`}
+                  >
+                    {item.title}
+                  </span>
+                </Link>
+              );
+            })}
           </nav>
+
+          <div className="hidden md:block">
+            <a href="tel:+905066232636">
+              <Button size="sm" data-testid="button-header-call">
+                <Phone className="w-3.5 h-3.5 mr-1.5" />
+                Bizi Arayın
+              </Button>
+            </a>
+          </div>
 
           <Button
             size="icon"
@@ -81,17 +94,30 @@ export default function PublicHeader() {
               className="md:hidden overflow-hidden border-t"
             >
               <nav className="flex flex-col p-4 gap-1" data-testid="nav-mobile">
-                {navItems.map((item) => (
-                  <Link key={item.path} href={item.path} onClick={() => setMobileOpen(false)}>
-                    <Button
-                      variant={location === item.path ? "secondary" : "ghost"}
-                      className="w-full justify-start"
-                      data-testid={`nav-mobile-${item.path.replace("/", "") || "home"}`}
-                    >
-                      {item.title}
-                    </Button>
-                  </Link>
-                ))}
+                {navItems.map((item) => {
+                  const isActive = item.path === "/" ? location === "/" : location.startsWith(item.path);
+                  return (
+                    <Link key={item.path} href={item.path} onClick={() => setMobileOpen(false)}>
+                      <Button
+                        variant={isActive ? "secondary" : "ghost"}
+                        className="w-full justify-start"
+                        data-testid={`nav-mobile-${item.path.replace("/", "") || "home"}`}
+                      >
+                        {item.title}
+                      </Button>
+                    </Link>
+                  );
+                })}
+                <div className="pt-2 border-t mt-2">
+                  <a href="tel:+905066232636" className="flex items-center gap-2 text-sm text-muted-foreground px-4 py-2">
+                    <Phone className="w-4 h-4" />
+                    0 (506) 623 26 36
+                  </a>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground px-4 py-2">
+                    <MapPin className="w-4 h-4 shrink-0" />
+                    <span>Güzelyalı Mah. Bağdat Cad. No:95/7 Pendik / İstanbul</span>
+                  </div>
+                </div>
               </nav>
             </motion.div>
           )}
