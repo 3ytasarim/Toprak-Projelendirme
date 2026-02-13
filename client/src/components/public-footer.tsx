@@ -74,25 +74,25 @@ export default function PublicFooter() {
       </div>
 
       <div className="border-t border-background/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
-          <p className="text-xs opacity-50">
-            &copy; {new Date().getFullYear()} Toprak Projelendirme - Tüm hakları saklıdır.
-          </p>
-          <motion.p
-            className="text-xs text-orange-400"
+        <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col items-center justify-center gap-3">
+          <motion.div
+            className="flex items-center justify-center gap-3 text-sm text-orange-400"
             animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
             transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 2 }}
           >
             <motion.img
               src={logo3y}
               alt="3Y Tasarım"
-              className="w-10 h-10 inline-block mr-2 align-middle rounded-sm"
+              className="w-16 h-16 rounded-md"
               style={{ filter: "brightness(1.5)" }}
               animate={{ rotateY: 360 }}
               transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
             />
-            Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a>
-          </motion.p>
+            <span>Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a></span>
+          </motion.div>
+          <p className="text-xs opacity-50">
+            &copy; {new Date().getFullYear()} Toprak Projelendirme - Tüm hakları saklıdır.
+          </p>
         </div>
       </div>
     </footer>
