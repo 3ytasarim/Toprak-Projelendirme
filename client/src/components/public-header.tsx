@@ -42,7 +42,7 @@ export default function PublicHeader() {
           </nav>
 
           <Link href="/" data-testid="link-logo" className="lg:absolute lg:left-1/2 lg:-translate-x-1/2">
-            <img src={logoImg} alt="Toprak Projelendirme" className="w-11 h-11 rounded-full object-cover" />
+            <img src={logoImg} alt="Toprak Projelendirme" className="w-14 h-14 rounded-full object-cover" />
           </Link>
 
           <div className="hidden lg:flex items-center">
