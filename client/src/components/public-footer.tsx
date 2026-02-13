@@ -78,11 +78,11 @@ export default function PublicFooter() {
             &copy; {new Date().getFullYear()} Toprak Projelendirme - Tüm hakları saklıdır.
           </p>
           <motion.p
-            className="text-xs text-white"
+            className="text-xs text-orange-400"
             animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
             transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 2 }}
           >
-            Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="text-white hover:underline transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a>
+            Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a>
           </motion.p>
         </div>
       </div>
