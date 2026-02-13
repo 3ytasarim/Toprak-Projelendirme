@@ -76,6 +76,9 @@ export default function PublicFooter() {
           <p className="text-xs opacity-50">
             &copy; {new Date().getFullYear()} Toprak Projelendirme - Tüm hakları saklıdır.
           </p>
+          <p className="text-xs opacity-40">
+            Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a>
+          </p>
         </div>
       </div>
     </footer>
