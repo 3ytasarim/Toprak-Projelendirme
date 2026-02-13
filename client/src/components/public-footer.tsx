@@ -80,7 +80,7 @@ export default function PublicFooter() {
             animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
             transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 2 }}
           >
-            <div style={{ perspective: "800px" }}>
+            <a href="https://www.3ytasarim.com" target="_blank" rel="noopener noreferrer" style={{ perspective: "800px" }}>
               <motion.img
                 src={logo3y}
                 alt="3Y Tasarım"
@@ -89,7 +89,7 @@ export default function PublicFooter() {
                 animate={{ rotateY: 360 }}
                 transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
               />
-            </div>
+            </a>
             <span>Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a></span>
           </motion.div>
           <p className="text-xs opacity-50">
