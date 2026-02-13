@@ -86,9 +86,10 @@ export default function PublicFooter() {
             <motion.img
               src={logo3y}
               alt="3Y Tasarım"
-              className="w-5 h-5 inline-block mr-1.5 align-middle"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              className="w-6 h-6 inline-block mr-2 align-middle rounded-sm"
+              style={{ filter: "brightness(1.5)" }}
+              animate={{ rotateY: 360 }}
+              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
             />
             Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a>
           </motion.p>
