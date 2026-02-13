@@ -41,11 +41,11 @@ export default function PublicHeader() {
             })}
           </nav>
 
-          <Link href="/" data-testid="link-logo" className="lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+          <Link href="/" data-testid="link-logo" className="absolute left-1/2 -translate-x-1/2">
             <img src={logoImg} alt="Toprak Projelendirme" className="w-14 h-14 rounded-full object-cover" />
           </Link>
 
-          <div className="hidden lg:flex items-center">
+          <div className="hidden lg:flex items-center ml-auto">
             <a href="tel:+905066232636" data-testid="link-phone-header">
               <Button variant="outline" size="sm" className="rounded-full gap-2">
                 <Phone className="w-3.5 h-3.5" />
