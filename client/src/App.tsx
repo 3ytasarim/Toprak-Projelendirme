@@ -18,6 +18,7 @@ import AdminSliders from "@/pages/admin/sliders";
 import AdminServices from "@/pages/admin/services-admin";
 import AdminProjects from "@/pages/admin/projects-admin";
 import AdminBlog from "@/pages/admin/blog-admin";
+import FloatingCTA from "@/components/floating-cta";
 
 function Router() {
   return (
@@ -47,6 +48,7 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Router />
+        <FloatingCTA />
       </TooltipProvider>
     </QueryClientProvider>
   );
