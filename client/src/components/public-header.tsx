@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Phone, MapPin, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import logoImg from "@assets/murat_logo_1770998463808.jpeg";
@@ -13,6 +13,28 @@ const navItems = [
   { title: "İletişim", path: "/iletisim" },
 ];
 
+function HamburgerIcon({ open }: { open: boolean }) {
+  return (
+    <div className="w-6 h-5 flex flex-col justify-between cursor-pointer">
+      <motion.span
+        animate={open ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="block h-[2px] w-6 bg-foreground origin-center"
+      />
+      <motion.span
+        animate={open ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
+        transition={{ duration: 0.2 }}
+        className="block h-[2px] w-6 bg-foreground"
+      />
+      <motion.span
+        animate={open ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="block h-[2px] w-6 bg-foreground origin-center"
+      />
+    </div>
+  );
+}
+
 export default function PublicHeader() {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -20,7 +42,7 @@ export default function PublicHeader() {
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-16 gap-6">
+        <div className="relative flex items-center justify-between h-16 gap-6">
           <nav className="hidden lg:flex items-center gap-1" data-testid="nav-desktop">
             {navItems.map((item) => {
               const isActive = item.path === "/" ? location === "/" : location.startsWith(item.path);
@@ -54,52 +76,77 @@ export default function PublicHeader() {
             </a>
           </div>
 
-          <Button
-            size="icon"
-            variant="ghost"
-            className="lg:hidden ml-auto"
+          <button
+            className="lg:hidden ml-auto p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
             data-testid="button-mobile-menu"
           >
-            {mobileOpen ? <X /> : <Menu />}
-          </Button>
+            <HamburgerIcon open={mobileOpen} />
+          </button>
         </div>
       </div>
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden overflow-hidden border-t"
-          >
-            <nav className="flex flex-col p-4 gap-1" data-testid="nav-mobile">
-              {navItems.map((item) => {
-                const isActive = item.path === "/" ? location === "/" : location.startsWith(item.path);
-                return (
-                  <Link key={item.path} href={item.path} onClick={() => setMobileOpen(false)}>
-                    <Button
-                      variant={isActive ? "secondary" : "ghost"}
-                      className="w-full justify-start"
-                      data-testid={`nav-mobile-${item.path.replace("/", "") || "home"}`}
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 top-16 bg-black/40 z-40 lg:hidden"
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 250 }}
+              className="fixed top-16 right-0 bottom-0 w-[280px] bg-background border-l z-50 lg:hidden flex flex-col"
+            >
+              <nav className="flex flex-col p-5 gap-1 flex-1" data-testid="nav-mobile">
+                {navItems.map((item, index) => {
+                  const isActive = item.path === "/" ? location === "/" : location.startsWith(item.path);
+                  return (
+                    <motion.div
+                      key={item.path}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 + 0.1 }}
                     >
-                      {item.title}
-                    </Button>
-                  </Link>
-                );
-              })}
-              <div className="pt-3 mt-2 border-t flex flex-col gap-2">
-                <a href="tel:+905066232636">
-                  <Button variant="outline" className="w-full rounded-full gap-2">
-                    <Phone className="w-4 h-4" />
-                    0 (506) 623 26 36
-                  </Button>
+                      <Link href={item.path} onClick={() => setMobileOpen(false)}>
+                        <div
+                          className={`flex items-center justify-between py-3 px-3 rounded-md transition-colors ${
+                            isActive ? "bg-muted text-foreground" : "text-muted-foreground"
+                          }`}
+                          data-testid={`nav-mobile-${item.path.replace("/", "") || "home"}`}
+                        >
+                          <span className="text-sm font-medium">{item.title}</span>
+                          <ChevronRight className="w-4 h-4 opacity-40" />
+                        </div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </nav>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+                className="p-5 border-t flex flex-col gap-3"
+              >
+                <a href="tel:+905066232636" className="flex items-center gap-3 text-sm text-muted-foreground">
+                  <Phone className="w-4 h-4" />
+                  0 (506) 623 26 36
                 </a>
-              </div>
-            </nav>
-          </motion.div>
+                <div className="flex items-start gap-3 text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+                  <span>Güzelyalı Mah. Bağdat Cad. No:95/7 Pendik / İstanbul</span>
+                </div>
+              </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
