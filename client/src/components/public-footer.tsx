@@ -83,7 +83,7 @@ export default function PublicFooter() {
             <motion.img
               src={logo3y}
               alt="3Y Tasarım"
-              className="w-16 h-16 rounded-md"
+              className="w-24 h-24 rounded-md"
               style={{ filter: "brightness(1.5)" }}
               animate={{ rotateY: 360 }}
               transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
