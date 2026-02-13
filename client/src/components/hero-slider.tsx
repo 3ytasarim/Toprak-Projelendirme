@@ -44,7 +44,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
                     className="absolute inset-0 w-full h-full object-cover"
                     data-testid={`slider-image-${index}`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30" />
                   <div className="absolute inset-0 flex items-end pb-20 sm:pb-16 md:items-center md:pb-0">
                     <div className="w-full px-6 sm:px-10 md:px-14 lg:px-16">
                       <div className="max-w-lg">
@@ -127,22 +127,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
           ))}
         </div>
 
-        <div className="absolute bottom-5 right-5 hidden md:flex items-center gap-2">
-          <button
-            onClick={scrollPrev}
-            className="w-9 h-9 rounded-md bg-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-colors"
-            data-testid="button-slider-prev"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={scrollNext}
-            className="w-9 h-9 rounded-md bg-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-colors"
-            data-testid="button-slider-next"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
+        
       </div>
     </section>
   );
