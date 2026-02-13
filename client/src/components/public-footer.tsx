@@ -80,14 +80,16 @@ export default function PublicFooter() {
             animate={{ scale: [1, 1.05, 1, 1.05, 1] }}
             transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 2 }}
           >
-            <motion.img
-              src={logo3y}
-              alt="3Y Tasarım"
-              className="w-24 h-24 rounded-md"
-              style={{ objectFit: "contain" }}
-              animate={{ rotateY: [0, 180, 360] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", times: [0, 0.5, 1] }}
-            />
+            <div style={{ perspective: "800px" }}>
+              <motion.img
+                src={logo3y}
+                alt="3Y Tasarım"
+                className="w-24 h-24 rounded-md"
+                style={{ objectFit: "contain", transformStyle: "preserve-3d" }}
+                animate={{ rotateY: 360 }}
+                transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+              />
+            </div>
             <span>Design By  |  <a href="https://3ytasarim.com" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline transition-opacity" data-testid="link-designer">3Y Tasarım Web & Yazılım Ajansı</a></span>
           </motion.div>
           <p className="text-xs opacity-50">
