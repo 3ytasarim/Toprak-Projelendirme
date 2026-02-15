@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Building2, Shield, FileText, Zap, Award, Users, CheckCircle, Landmark, Factory } from "lucide-react";
 import kamuCevreLogo from "@assets/bakanliklogo_(1)_1771147459131.png";
 import kamuGenclikLogo from "@assets/Genclik-ve-Spor_1771147472888.png";
-import kamuKiyiLogo from "@assets/ke_1771147494517.webp";
+const kamuKiyiLogo = "/images/kamu-kiyi-emniyeti.png";
 import kamuSaglikLogo from "@assets/turkiye-cumhuriyeti-saglik-bakanligi-logo-png_seeklogo-345239_1771147509708.png";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -217,10 +217,10 @@ export default function Home() {
               className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center"
             >
               {[
-                { src: kamuCevreLogo, alt: "T.C. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı", darkBg: true },
-                { src: kamuGenclikLogo, alt: "T.C. Gençlik ve Spor Bakanlığı", darkBg: false },
-                { src: kamuKiyiLogo, alt: "Kıyı Emniyeti Genel Müdürlüğü", darkBg: false },
-                { src: kamuSaglikLogo, alt: "T.C. Sağlık Bakanlığı", darkBg: false },
+                { src: kamuCevreLogo, alt: "T.C. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı" },
+                { src: kamuGenclikLogo, alt: "T.C. Gençlik ve Spor Bakanlığı" },
+                { src: kamuKiyiLogo, alt: "Kıyı Emniyeti Genel Müdürlüğü" },
+                { src: kamuSaglikLogo, alt: "T.C. Sağlık Bakanlığı" },
               ].map((logo, i) => (
                 <motion.div
                   key={i}
@@ -228,14 +228,12 @@ export default function Home() {
                   className="flex items-center justify-center p-4 w-full"
                   data-testid={`img-kamu-logo-${i}`}
                 >
-                  <div className={`flex items-center justify-center rounded-full ${logo.darkBg ? "bg-slate-700 p-3" : ""}`}>
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="w-28 h-28 md:w-36 md:h-36 object-contain opacity-85 hover:opacity-100 transition-opacity duration-300"
-                      title={logo.alt}
-                    />
-                  </div>
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="w-28 h-28 md:w-36 md:h-36 object-contain opacity-85 hover:opacity-100 transition-opacity duration-300"
+                    title={logo.alt}
+                  />
                 </motion.div>
               ))}
             </motion.div>
