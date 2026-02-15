@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, Building2, Shield, FileText, Zap, Award, Users, CheckCircle, Landmark, Factory } from "lucide-react";
-import kamuCevreLogo from "@assets/bakanliklogo_(1)_1771147459131.png";
+const kamuCevreLogo = "/images/kamu-cevre-bakanligi.png";
 import kamuGenclikLogo from "@assets/Genclik-ve-Spor_1771147472888.png";
 const kamuKiyiLogo = "/images/kamu-kiyi-emniyeti.png";
 import kamuSaglikLogo from "@assets/turkiye-cumhuriyeti-saglik-bakanligi-logo-png_seeklogo-345239_1771147509708.png";
