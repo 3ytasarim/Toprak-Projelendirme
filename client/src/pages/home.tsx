@@ -214,14 +214,13 @@ export default function Home() {
 
             <motion.div
               variants={fadeUp}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-10 items-center justify-items-center"
+              className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center"
             >
               {[
                 { src: kamuCevreLogo, alt: "T.C. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı" },
                 { src: kamuGenclikLogo, alt: "T.C. Gençlik ve Spor Bakanlığı" },
                 { src: kamuKiyiLogo, alt: "Kıyı Emniyeti Genel Müdürlüğü" },
                 { src: kamuSaglikLogo, alt: "T.C. Sağlık Bakanlığı" },
-                { src: "/images/kamu-kentsel-donusum.png", alt: "Kentsel Dönüşüm Başkanlığı" },
               ].map((logo, i) => (
                 <motion.div
                   key={i}
