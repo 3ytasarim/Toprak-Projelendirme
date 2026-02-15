@@ -195,7 +195,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-[#1a2e44]">
+      <section className="py-20 md:py-28 bg-secondary">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
@@ -204,34 +204,35 @@ export default function Home() {
             variants={stagger}
           >
             <motion.div variants={fadeUp} className="text-center mb-16">
-              <span className="text-orange-400 font-medium text-sm tracking-widest uppercase mb-3 block">
+              <span className="text-primary font-medium text-sm tracking-widest uppercase mb-3 block">
                 Referanslarımız
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white" data-testid="text-kamu-title">
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground" data-testid="text-kamu-title">
                 Hizmet Verdiğimiz Kamu Kurumları
               </h2>
             </motion.div>
 
             <motion.div
               variants={fadeUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-10 items-center justify-items-center"
             >
               {[
                 { src: kamuCevreLogo, alt: "T.C. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı" },
                 { src: kamuGenclikLogo, alt: "T.C. Gençlik ve Spor Bakanlığı" },
                 { src: kamuKiyiLogo, alt: "Kıyı Emniyeti Genel Müdürlüğü" },
                 { src: kamuSaglikLogo, alt: "T.C. Sağlık Bakanlığı" },
+                { src: "/images/kamu-kentsel-donusum.png", alt: "Kentsel Dönüşüm Başkanlığı" },
               ].map((logo, i) => (
                 <motion.div
                   key={i}
                   variants={fadeUp}
-                  className="flex items-center justify-center p-6 w-full"
+                  className="flex items-center justify-center p-4 w-full"
                   data-testid={`img-kamu-logo-${i}`}
                 >
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="w-32 h-32 md:w-40 md:h-40 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    className="w-28 h-28 md:w-36 md:h-36 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                     title={logo.alt}
                   />
                 </motion.div>
