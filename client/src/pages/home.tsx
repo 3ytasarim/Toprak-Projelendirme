@@ -74,7 +74,7 @@ export default function Home() {
                 Kamu yapıları, hastaneler, spor salonları, endüstriyel tesisler, lojistik depolar ve tarihi yapılar başta olmak üzere, yüzlerce yapının teknik analiz ve değerlendirme süreci tarafımızca yürütülmüştür.
               </p>
 
-              <div className="grid grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Award className="w-5 h-5 text-primary" />
