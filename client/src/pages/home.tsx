@@ -195,7 +195,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-slate-800">
+      <section className="py-20 md:py-28 bg-[#1a2e44]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
