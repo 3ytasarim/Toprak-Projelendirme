@@ -5,7 +5,7 @@ import { ArrowRight, Building2, Shield, FileText, Zap, Award, Users, CheckCircle
 const kamuCevreLogo = "/images/kamu-cevre-bakanligi.png";
 import kamuGenclikLogo from "@assets/Genclik-ve-Spor_1771147472888.png";
 const kamuKiyiLogo = "/images/kamu-kiyi-emniyeti.png";
-import kamuSaglikLogo from "@assets/turkiye-cumhuriyeti-saglik-bakanligi-logo-png_seeklogo-345239_1771147509708.png";
+const kamuSaglikLogo = "/images/kamu-saglik-bakanligi.png";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -195,26 +195,31 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-secondary">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "40px 40px" }} />
+        <div className="relative max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={stagger}
           >
-            <motion.div variants={fadeUp} className="text-center mb-16">
-              <span className="text-primary font-medium text-sm tracking-widest uppercase mb-3 block">
+            <motion.div variants={fadeUp} className="text-center mb-14">
+              <span className="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-3 block">
                 Referanslarımız
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground" data-testid="text-kamu-title">
+              <h2 className="text-3xl md:text-4xl font-bold text-white" data-testid="text-kamu-title">
                 Hizmet Verdiğimiz Kamu Kurumları
               </h2>
+              <p className="text-slate-400 mt-4 max-w-2xl mx-auto text-sm">
+                Kamu kurumlarının deprem güvenliği ve yapısal risk değerlendirme projelerinde güvenilir çözüm ortağıyız.
+              </p>
             </motion.div>
 
             <motion.div
               variants={fadeUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center"
+              className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
             >
               {[
                 { src: kamuCevreLogo, alt: "T.C. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı" },
@@ -225,15 +230,18 @@ export default function Home() {
                 <motion.div
                   key={i}
                   variants={fadeUp}
-                  className="flex items-center justify-center p-4 w-full"
+                  className="group flex flex-col items-center justify-center p-6 md:p-8 rounded-md bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
                   data-testid={`img-kamu-logo-${i}`}
                 >
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="w-28 h-28 md:w-36 md:h-36 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    className="w-24 h-24 md:w-32 md:h-32 object-contain opacity-90 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
                     title={logo.alt}
                   />
+                  <span className="text-slate-400 text-xs text-center mt-4 leading-tight group-hover:text-slate-300 transition-colors duration-300">
+                    {logo.alt}
+                  </span>
                 </motion.div>
               ))}
             </motion.div>
