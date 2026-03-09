@@ -108,9 +108,9 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
       </nav>
 
       <div className="p-5 border-t flex flex-col gap-3">
-        <a href="tel:+905066232636" className="flex items-center gap-3 text-sm text-muted-foreground">
+        <a href="tel:+902167552755" className="flex items-center gap-3 text-sm text-muted-foreground">
           <Phone className="w-4 h-4" />
-          0 (506) 623 26 36
+          +90 (216) 755 27 55
         </a>
         <div className="flex items-start gap-3 text-sm text-muted-foreground">
           <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
@@ -156,10 +156,10 @@ export default function PublicHeader() {
             </nav>
 
             <div className="hidden lg:flex items-center ml-4">
-              <a href="tel:+905066232636" data-testid="link-phone-header">
+              <a href="tel:+902167552755" data-testid="link-phone-header">
                 <Button variant="outline" size="sm" className="rounded-full gap-2">
                   <Phone className="w-3.5 h-3.5" />
-                  0 (506) 623 26 36
+                  +90 (216) 755 27 55
                 </Button>
               </a>
             </div>

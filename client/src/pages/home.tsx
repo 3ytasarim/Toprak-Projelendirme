@@ -393,9 +393,9 @@ export default function Home() {
               güvenilir içgörüler ve stratejiler sunar.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <a href="tel:+905066232636">
+              <a href="tel:+902167552755">
                 <Button className="bg-primary border-primary-border" data-testid="button-cta-call">
-                  Hemen Arayın: 0 (506) 623 26 36
+                  Hemen Arayın: +90 (216) 755 27 55
                 </Button>
               </a>
             </motion.div>

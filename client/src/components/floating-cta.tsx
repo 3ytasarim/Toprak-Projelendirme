@@ -28,7 +28,7 @@ export default function FloatingCTA() {
         <SiWhatsapp className="w-5 h-5" />
       </a>
       <a
-        href="tel:+905066232636"
+        href="tel:+902167552755"
         className="w-11 h-11 bg-primary text-primary-foreground flex items-center justify-center transition-opacity hover:opacity-90"
         data-testid="button-cta-phone"
         title="Ara"

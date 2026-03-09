@@ -61,9 +61,9 @@ export default function PublicFooter() {
           <div>
             <h4 className="font-semibold mb-4 text-sm uppercase tracking-wider">İletişim</h4>
             <div className="flex flex-col gap-3 text-sm">
-              <a href="tel:+905066232636" className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity" data-testid="footer-link-phone">
+              <a href="tel:+902167552755" className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity" data-testid="footer-link-phone">
                 <Phone className="w-4 h-4" />
-                <span>0 (506) 623 26 36</span>
+                <span>+90 (216) 755 27 55</span>
               </a>
               <div className="flex items-start gap-2 opacity-70">
                 <MapPin className="w-4 h-4 mt-0.5" />

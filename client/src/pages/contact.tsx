@@ -64,8 +64,8 @@ export default function Contact() {
                 <Phone className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-semibold mb-2">Telefon</h3>
-              <a href="tel:+905066232636" className="text-muted-foreground text-sm hover:text-primary transition-colors" data-testid="link-contact-phone">
-                0 (506) 623 26 36
+              <a href="tel:+902167552755" className="text-muted-foreground text-sm hover:text-primary transition-colors" data-testid="link-contact-phone">
+                +90 (216) 755 27 55
               </a>
             </Card>
 
