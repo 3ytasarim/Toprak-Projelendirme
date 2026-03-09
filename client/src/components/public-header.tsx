@@ -1,9 +1,32 @@
 import { Link, useLocation } from "wouter";
 import { useState, useEffect } from "react";
-import { Phone, MapPin, ChevronRight } from "lucide-react";
+import { Phone, MapPin, ChevronRight, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { createPortal } from "react-dom";
 import logoImg from "@assets/murat_logo_1770998463808.jpeg";
+
+function AnnouncementBar() {
+  return (
+    <div className="hidden lg:block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden" data-testid="announcement-bar">
+      <div className="relative h-9 flex items-center">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-3">
+          <Shield className="w-3.5 h-3.5 text-orange-400 flex-shrink-0" />
+          <span className="text-[12px] tracking-wide">
+            <span className="font-semibold text-orange-400">Toprak Projelendirme</span>, Çevre, Şehircilik ve İklim Değişikliği Bakanlığı tarafından yetkilendirilmiş{" "}
+            <span className="font-semibold text-orange-400">Riskli Yapı Tespiti (ÇŞB)</span> lisanslı bir mühendislik firmasıdır.
+          </span>
+          <span className="text-slate-600 mx-8">•</span>
+          <Shield className="w-3.5 h-3.5 text-orange-400 flex-shrink-0" />
+          <span className="text-[12px] tracking-wide">
+            <span className="font-semibold text-orange-400">Toprak Projelendirme</span>, Çevre, Şehircilik ve İklim Değişikliği Bakanlığı tarafından yetkilendirilmiş{" "}
+            <span className="font-semibold text-orange-400">Riskli Yapı Tespiti (ÇŞB)</span> lisanslı bir mühendislik firmasıdır.
+          </span>
+          <span className="text-slate-600 mx-8">•</span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const leftNav = [
   { title: "Ana Sayfa", path: "/" },
@@ -128,7 +151,9 @@ export default function PublicHeader() {
 
   return (
     <>
-      <header className="sticky top-0 bg-background border-b" style={{ zIndex: 100000 }}>
+      <div className="sticky top-0" style={{ zIndex: 100000 }}>
+      <AnnouncementBar />
+      <header className="bg-background border-b">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between h-16">
             <button
@@ -168,6 +193,7 @@ export default function PublicHeader() {
           </div>
         </div>
       </header>
+      </div>
 
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </>
