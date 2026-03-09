@@ -1,25 +1,88 @@
 import { Link, useLocation } from "wouter";
 import { useState, useEffect } from "react";
-import { Phone, MapPin, ChevronRight, Shield } from "lucide-react";
+import { Phone, MapPin, ChevronRight, Shield, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { createPortal } from "react-dom";
 import logoImg from "@assets/murat_logo_1770998463808.jpeg";
 
 function AnnouncementBar() {
   return (
-    <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white" data-testid="announcement-bar">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-2 lg:py-0 lg:h-9 flex items-center justify-center gap-2">
-        <Shield className="w-3.5 h-3.5 text-orange-400 flex-shrink-0 hidden sm:block" />
-        <span className="text-[10px] sm:text-[11px] lg:text-[12px] tracking-wide text-center leading-relaxed">
-          <span className="font-semibold announcement-shimmer">Toprak Projelendirme</span>
-          <span className="hidden sm:inline">, Çevre, Şehircilik ve İklim Değişikliği Bakanlığı tarafından yetkilendirilmiş</span>
-          <span className="sm:hidden">,</span>{" "}
-          <span className="font-semibold announcement-shimmer">ÇŞB Riskli Yapı Tespiti</span> lisanslı
-          <span className="hidden sm:inline"> bir mühendislik firmasıdır</span>
-          <span className="sm:hidden"> mühendislik firması</span>
+    <div className="hidden lg:block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white" data-testid="announcement-bar">
+      <div className="max-w-7xl mx-auto px-6 h-9 flex items-center justify-center gap-2.5">
+        <Shield className="w-3.5 h-3.5 text-orange-400 flex-shrink-0" />
+        <span className="text-[12px] tracking-wide">
+          <span className="font-semibold announcement-shimmer">Toprak Projelendirme</span>, Çevre, Şehircilik ve İklim Değişikliği Bakanlığı tarafından yetkilendirilmiş{" "}
+          <span className="font-semibold announcement-shimmer">Riskli Yapı Tespiti (ÇŞB)</span> lisanslı bir mühendislik firmasıdır.
         </span>
       </div>
     </div>
+  );
+}
+
+function MobileAnnouncementPopup() {
+  const [visible, setVisible] = useState(false);
+  const [closing, setClosing] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), 600);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleClose = () => {
+    setClosing(true);
+    setTimeout(() => setVisible(false), 300);
+  };
+
+  if (!visible) return null;
+
+  return createPortal(
+    <div
+      className={`lg:hidden fixed inset-0 flex items-end justify-center p-4 transition-all duration-300 ${closing ? "opacity-0" : "opacity-100"}`}
+      style={{ zIndex: 200000 }}
+      data-testid="mobile-announcement-popup"
+    >
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={handleClose} />
+      <div
+        className={`relative w-full max-w-md rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 ${closing ? "translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
+      >
+        <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6">
+          <button
+            onClick={handleClose}
+            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+            data-testid="button-close-announcement"
+          >
+            <X className="w-4 h-4 text-white" />
+          </button>
+
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-full bg-orange-400/20 flex items-center justify-center">
+              <Shield className="w-5 h-5 text-orange-400" />
+            </div>
+            <div>
+              <p className="text-orange-400 text-[10px] font-semibold tracking-widest uppercase">Yetkili Firma</p>
+              <p className="text-white font-bold text-sm">Toprak Projelendirme</p>
+            </div>
+          </div>
+
+          <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-4" />
+
+          <p className="text-slate-300 text-[13px] leading-relaxed">
+            Çevre, Şehircilik ve İklim Değişikliği Bakanlığı tarafından yetkilendirilmiş{" "}
+            <span className="font-semibold announcement-shimmer">Riskli Yapı Tespiti (ÇŞB)</span>{" "}
+            lisanslı bir mühendislik firmasıdır.
+          </p>
+
+          <button
+            onClick={handleClose}
+            className="mt-5 w-full py-2.5 rounded-lg bg-orange-400 hover:bg-orange-500 text-slate-900 font-semibold text-sm transition-colors"
+            data-testid="button-announcement-ok"
+          >
+            Anladım
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body
   );
 }
 
@@ -191,6 +254,7 @@ export default function PublicHeader() {
       </div>
 
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <MobileAnnouncementPopup />
     </>
   );
 }
