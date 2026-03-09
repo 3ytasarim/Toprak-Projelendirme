@@ -7,12 +7,16 @@ import logoImg from "@assets/murat_logo_1770998463808.jpeg";
 
 function AnnouncementBar() {
   return (
-    <div className="hidden lg:block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white" data-testid="announcement-bar">
-      <div className="max-w-7xl mx-auto px-6 h-9 flex items-center justify-center gap-2.5">
-        <Shield className="w-3.5 h-3.5 text-orange-400 flex-shrink-0" />
-        <span className="text-[12px] tracking-wide">
-          <span className="font-semibold announcement-shimmer">Toprak Projelendirme</span>, Çevre, Şehircilik ve İklim Değişikliği Bakanlığı tarafından yetkilendirilmiş{" "}
-          <span className="font-semibold announcement-shimmer">Riskli Yapı Tespiti (ÇŞB)</span> lisanslı bir mühendislik firmasıdır.
+    <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white" data-testid="announcement-bar">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-2 lg:py-0 lg:h-9 flex items-center justify-center gap-2">
+        <Shield className="w-3.5 h-3.5 text-orange-400 flex-shrink-0 hidden sm:block" />
+        <span className="text-[10px] sm:text-[11px] lg:text-[12px] tracking-wide text-center leading-relaxed">
+          <span className="font-semibold announcement-shimmer">Toprak Projelendirme</span>
+          <span className="hidden sm:inline">, Çevre, Şehircilik ve İklim Değişikliği Bakanlığı tarafından yetkilendirilmiş</span>
+          <span className="sm:hidden">,</span>{" "}
+          <span className="font-semibold announcement-shimmer">ÇŞB Riskli Yapı Tespiti</span> lisanslı
+          <span className="hidden sm:inline"> bir mühendislik firmasıdır</span>
+          <span className="sm:hidden"> mühendislik firması</span>
         </span>
       </div>
     </div>
